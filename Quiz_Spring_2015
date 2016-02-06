@@ -1,0 +1,107 @@
+/*
+
+Student Class ------------------------------------------------------------------------------------------------------------------------
+
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package quiz_spring_2015;
+
+/**
+ *
+ * @author pc
+ */
+public class Student {
+private String[] fullName = new String[2];
+private Address address;
+private Date birthDate;
+
+
+
+
+ public  String toString(){
+    return String.format("%s %s  (%s)",fullName[0],fullName[1],birthDate.toString());
+ }
+ public Student (String [] fn , Address a, Date date){
+     setfullName(fn);
+     setAddress (a);
+     setDate(date);
+ }
+ public Student(){
+     
+ }
+ public Student (Student s){
+ this(s.getName(),s.getAddress(),s.getbDate());
+         }
+ public void setfullName(String [] a){
+  fullName = a;
+ }
+ public void setAddress(Address a){
+     address = a;
+ }
+ public void setDate(Date d){
+     birthDate = d;
+ }
+ public  String [] getName(){
+     return fullName;
+ }
+ public Address getAddress(){
+     return address;
+ }
+public Date getbDate(){
+    return birthDate;
+}
+
+}
+
+The Main =============================================================================================================================
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package quiz_spring_2015;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author pc
+ */
+public class Quiz_spring_2015 {
+
+    public static void main(String[] args) {
+        // Student (String [] fn , Address a, Date date)
+        // Date(int d, int m, int y
+        // Address (Street sn, String city, String country)
+        // Street (int n, String na, String q)
+
+        String[] name1 = {"Ali", "Hassan"};
+        Street street1 = new Street(10, "Rafha Street", "Salah Eddine District");
+        Address address1 = new Address(street1, "Riyadh", "Saudi Arabia");
+        Date bdate1 = new Date (13,4,1986);
+        Student student1 = new Student(name1, address1,bdate1);
+        
+        Student student2 = new Student(student1);
+        String [] name2 = {"salme","al-salem"};
+                student2.setfullName(name2);
+                student2.setDate(new Date(21,5,1989));
+                student2.getAddress().getStreetName().setQuarter("Al-Morsalat");
+         
+        ArrayList <Student> studentList = new ArrayList<Student>();
+        studentList.add(student1);
+        studentList.add(student2);
+        
+        for (int i =0; i <studentList.size(); i++){
+            
+            System.out.println(studentList.get(i).toString());
+        }
+                
+    }
+
+}
+
+
+
+
